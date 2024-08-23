@@ -1,0 +1,68 @@
+<div class="container form-container d-flex align-items-center justify-content-center">
+  <div class="col-12 col-md-8 col-lg-5 mt-5 card p-2">
+    <div class="form-box">
+      <h1 class="text-center mb-4">Datos personales</h1>
+      <form (ngSubmit)="formSubmit()" [formGroup]="profileForm" class="row col" autocomplete="off">
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Nombre Completo</mat-label>
+          <input formControlName="nombre" name="nombre" matInput>
+          <mat-error *ngIf="profileForm.get('nombre')?.hasError('required')">
+            Ingrese su nombre completo
+          </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Correo</mat-label>
+          <input formControlName="email" name="email" type="email" matInput placeholder="Ingrese su correo">
+          <mat-error
+            *ngIf="profileForm.get('email')?.hasError('email') && !profileForm.get('email')?.hasError('required')">
+            Ingrese un correo válido
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('email')?.hasError('required')">
+            Ingrese su correo
+          </mat-error>
+          <mat-error *ngIf="profileForm.get('email')?.hasError('emailExists')">
+            El correo ingresado ya está en uso
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Teléfono</mat-label>
+          <input formControlName="telefono" matInput>
+
+          <mat-error *ngIf="profileForm.get('telefono')?.hasError('required')">
+            Ingrese su teléfono
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Dirección</mat-label>
+          <input formControlName="direccion" matInput>
+          <mat-error *ngIf="profileForm.get('telefono')?.hasError('required')">
+            Ingrese su dirección
+          </mat-error>
+        </mat-form-field>
+
+
+        <div class="row">
+          <div class="col-12">
+            <div class="container text-center">
+              <button *ngIf="profileForm.pending" disabled type="submit" mat-raised-button color="primary">Validando
+                Datos...</button>
+              <button *ngIf="!profileForm.pending" [disabled]="profileForm.invalid" disabled type="submit"
+                mat-raised-button color="primary">Guardar Datos</button>
+
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</div>

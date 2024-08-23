@@ -1,0 +1,19 @@
+<mat-toolbar color="primary">
+  <button [routerLink]="['home']" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>home</mat-icon>
+  </button>
+  <span [routerLink]="['home']">Bienvenido {{user.nombre}}</span>
+  <span class="example-spacer"></span>
+  <button [routerLink]="['profile']" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>manage_accounts</mat-icon>
+  </button>
+  <button (click)="signOut()" mat-icon-button class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon">
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
+</mat-toolbar>
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
